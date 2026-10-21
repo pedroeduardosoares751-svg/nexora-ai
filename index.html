@@ -1,1 +1,141 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXORA AI</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #090d18;
+      color: #f4f6ff;
+      min-height: 100vh;
+    }
+    header {
+      padding: 22px;
+      text-align: center;
+      border-bottom: 1px solid #252d45;
+    }
+    header h1 { color: #8b9dff; margin: 0; }
+    header p { color: #aab2cc; }
+    main { max-width: 850px; margin: auto; padding: 22px; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .card {
+      background: #151c2e;
+      border: 1px solid #2b3654;
+      border-radius: 14px;
+      padding: 18px;
+      color: white;
+      cursor: pointer;
+      text-align: left;
+    }
+    .card:hover { border-color: #8b9dff; }
+    .card h3 { margin: 0 0 8px; }
+    .card p { margin: 0; color: #b4bdd5; }
+    .panel {
+      margin-top: 20px;
+      background: #151c2e;
+      padding: 18px;
+      border-radius: 14px;
+    }
+    textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 12px;
+      border-radius: 9px;
+      border: 1px solid #394564;
+      background: #0c1222;
+      color: white;
+      font-size: 16px;
+      resize: vertical;
+    }
+    button.primary {
+      margin-top: 10px;
+      padding: 12px 18px;
+      border: 0;
+      border-radius: 9px;
+      background: #7c8cff;
+      color: #080c18;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #result {
+      white-space: pre-wrap;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
+    .note { color: #aab2cc; font-size: 13px; }
+    @media(max-width: 480px) {
+      .cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>✦ NEXORA AI</h1>
+    <p>Sua central de inteligência digital</p>
+  </header>
+
+  <main>
+    <h2>O que vamos fazer hoje?</h2>
+    <div class="cards">
+      <button class="card" onclick="selectTool('Assistente')">
+        <h3>🤖 Assistente</h3>
+        <p>Organize suas ideias e perguntas.</p>
+      </button>
+      <button class="card" onclick="selectTool('Programação')">
+        <h3>💻 Programação</h3>
+        <p>Planeje códigos e projetos.</p>
+      </button>
+      <button class="card" onclick="selectTool('Criatividade')">
+        <h3>🎨 Criatividade</h3>
+        <p>Crie ideias para seus projetos.</p>
+      </button>
+      <button class="card" onclick="selectTool('Estudos')">
+        <h3>📚 Estudos</h3>
+        <p>Organize assuntos para estudar.</p>
+      </button>
+    </div>
+
+    <section class="panel">
+      <h2 id="toolTitle">Assistente NEXORA</h2>
+      <textarea id="question" placeholder="Escreva sua pergunta ou ideia..."></textarea>
+      <button class="primary" onclick="respond()">Continuar</button>
+      <p class="note">Protótipo inicial: ainda não está conectado a um modelo de IA.</p>
+      <div id="result"></div>
+    </section>
+  </main>
+
+  <script>
+    let selectedTool = "Assistente";
+
+    function selectTool(tool) {
+      selectedTool = tool;
+      document.getElementById("toolTitle").textContent = tool;
+      document.getElementById("question").focus();
+    }
+
+    function respond() {
+      const question = document.getElementById("question").value.trim();
+      const result = document.getElementById("result");
+
+      if (!question) {
+        result.textContent = "Escreva uma pergunta ou ideia primeiro.";
+        return;
+      }
+
+      result.textContent =
+        "Área: " + selectedTool +
+        "\n\nSua mensagem: " + question +
+        "\n\nA interface está funcionando! Para gerar respostas inteligentes de verdade, precisaremos conectar um serviço de IA.";
+    }
+  </script>
+</body>
+</html>
