@@ -137,5 +137,30 @@
         "\n\nA interface está funcionando! Para gerar respostas inteligentes de verdade, precisaremos conectar um serviço de IA.";
     }
   </script>
+
+<section id="chat-nexora" style="max-width:600px;margin:30px auto;padding:20px;background:#15152b;color:white;border-radius:16px;font-family:Arial,sans-serif;">
+  <h2 style="color:#a78bfa;">🤖 NEXORA AI</h2>
+  <p>Olá! Sou a NEXORA AI. Como posso ajudar?</p>
+  <div id="nexora-respostas" style="min-height:60px;margin:15px 0;"></div>
+  <form id="nexora-form" style="display:flex;gap:8px;">
+    <input id="nexora-pergunta" placeholder="Digite sua mensagem..." style="flex:1;min-width:0;padding:12px;border-radius:8px;" required>
+    <button style="padding:12px;background:#7c3aed;color:white;border:0;border-radius:8px;">Enviar</button>
+  </form>
+</section>
+<script>
+document.getElementById("nexora-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const campo = document.getElementById("nexora-pergunta");
+  const respostas = document.getElementById("nexora-respostas");
+  const mensagem = document.createElement("p");
+  mensagem.textContent = "Você: " + campo.value;
+  respostas.appendChild(mensagem);
+  const aviso = document.createElement("p");
+  aviso.textContent = "NEXORA AI: Sua mensagem foi recebida! A inteligência artificial será conectada em uma próxima etapa.";
+  respostas.appendChild(aviso);
+  campo.value = "";
+});
+</script>
 </body>
 </html>
+
